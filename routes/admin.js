@@ -5,15 +5,37 @@ const fs=require('fs');
 
 const router=express.Router();
 
+let data1;
+
 router.get('/',(req,res,next)=>{
-   
-    res.send(`<form  action="/admin/" onsubmit="document.getElementById('username').value=localStorage.getItem('username')"
-     method='POST'>
-     <input id="message" name="message" type="text" placeholder="message">
-     <input type="hidden" name="username" id="username">
-     <button type="submit">SEND</button>
+    fs.readFile('./routes/data.js','UTF8',(err,data)=>{
+      
+        res.send(
+            `<div>
+            <p>${data}</p>
+            <form  action="/admin/" onsubmit="document.getElementById('username').value=localStorage.getItem('username')"
+         method='POST'>
+         <input id="message" name="message" type="text" placeholder="message">
+         <input type="hidden" name="username" id="username">
+         <button type="submit">SEND</button>
+        
+        </form>
+        </div>`)
+        
+    })
     
-    </form>`)
+   
+    // res.send(
+    //     `<div>
+    //     <p>${data1}</p>
+    //     <form  action="/admin/" onsubmit="document.getElementById('username').value=localStorage.getItem('username')"
+    //  method='POST'>
+    //  <input id="message" name="message" type="text" placeholder="message">
+    //  <input type="hidden" name="username" id="username">
+    //  <button type="submit">SEND</button>
+    
+    // </form>
+    // </div>`)
 
 });
 router.post('/',(req,res,next)=>{

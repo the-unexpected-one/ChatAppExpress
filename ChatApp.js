@@ -13,8 +13,6 @@ const shopRoutes=require('./routes/shop.js');
 
 const adminRoutes=require('./routes/admin.js');
 
-
-
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.use('/admin',adminRoutes);
